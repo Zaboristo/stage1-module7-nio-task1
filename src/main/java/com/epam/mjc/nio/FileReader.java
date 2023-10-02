@@ -24,7 +24,8 @@ public class FileReader {
             inChannel.read(buffer);
             buffer.flip();
 
-            for(int i = 0; i < fileSize; i++){
+            int i = 0;
+            while (i< fileSize){
                 while ((char) buffer.get() != '\n'){
                     build.append((char) buffer.get(i));
                     if (i< (fileSize - 1))
@@ -46,6 +47,7 @@ public class FileReader {
                     emailLine = build.toString();
                     build.setLength(0);
                 }
+                i++;
             }
         }
         catch (IOException e) {
